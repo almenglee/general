@@ -15,7 +15,7 @@ func (l List[T]) Len() int {
 	return len([]T(l))
 }
 
-func (l List[T]) isEmpty() bool {
+func (l List[T]) IsEmpty() bool {
 	return len([]T(l)) == 0
 }
 

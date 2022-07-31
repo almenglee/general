@@ -15,6 +15,10 @@ func (l List[T]) Len() int {
 	return len([]T(l))
 }
 
+func (l List[T]) isEmpty() bool {
+	return len([]T(l)) == 0
+}
+
 func (l List[T]) Slice() []T {
 	return []T(l)
 }

@@ -21,6 +21,14 @@ func NewMap[K, V any]() *Map[K, V] {
 	}
 }
 
+func FromMap[K, V any](m map[any]any) *Map[K, V] {
+	r := NewMap[K, V]()
+	for k, v := range m {
+		r.Set(k, v)
+	}
+	return r
+}
+
 func (m *Map[K, V]) Each(f func(K, V)) {
 	for _, v := range m._map {
 		f(v.Key, v.Val)
@@ -43,7 +51,7 @@ func (m *Map[K, V]) Values() []V {
 	return vals
 }
 
-func (m Map[K, V]) Get(key K) (V, bool) {
+func (m *Map[K, V]) Get(key K) (V, bool) {
 	hash := HashKey(key)
 	if v, ok := m._map[hash]; ok {
 		return v.Val, true

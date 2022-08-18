@@ -11,16 +11,16 @@ func Join[T any](a List[T], b List[T]) *List[T] {
 	return &a
 }
 
-func (l List[T]) Len() int {
-	return len([]T(l))
+func (l *List[T]) Len() int {
+	return len([]T(*l))
 }
 
-func (l List[T]) IsEmpty() bool {
-	return len([]T(l)) == 0
+func (l *List[T]) IsEmpty() bool {
+	return len([]T(*l)) == 0
 }
 
-func (l List[T]) Slice() []T {
-	return []T(l)
+func (l *List[T]) Slice() []T {
+	return []T(*l)
 }
 
 func AsList[T any](l []T) *List[T] {
